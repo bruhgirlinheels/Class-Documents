@@ -1,0 +1,61 @@
+# Function to calculate the mean of a list of numbers
+def calculate_mean(numbers):
+    # Calculate the sum of all numbers in the list
+    sum_numbers = sum(numbers)
+    # Find the length of the list (number of elements)
+    length_numbers = len(numbers)
+    # Calculate the mean (average) and round it to two decimal places
+    mean = round(sum_numbers / length_numbers, 2)
+    # Return the calculated mean
+    return mean
+
+# Function to calculate the median of a list of numbers
+def calculate_median(numbers):
+    # Sort the numbers in ascending order
+    sorted_numbers = sorted(numbers)
+    # Find the length of the list
+    length_numbers = len(numbers)
+    # Calculate the index of the middle number
+    middle_index = length_numbers // 2
+    # Check if the length is even
+    if length_numbers % 2 == 0:
+        # Calculate the median for even-length list
+        median = (sorted_numbers[middle_index - 1] + sorted_numbers[middle_index]) / 2
+    else:
+        # Median is the middle number for odd-length list
+        median = sorted_numbers[middle_index]
+    # Return the calculated median
+    return median
+
+# Function to calculate the standard deviation of a list of numbers
+def calculate_standard_deviation(numbers):
+    # Calculate the mean of the numbers using the calculate_mean function
+    numbers_mean = calculate_mean(numbers)
+    # Find the length of the list
+    length_numbers = len(numbers)
+    # Initialize a variable to keep track of the sum of squared distances
+    sum_of_squared_distance = 0
+    # Iterate through each number in the list
+    for number in numbers:
+        # Calculate the distance of the current number to the mean
+        distance = number - numbers_mean
+        # Calculate the square of the distance
+        squared_distance = distance ** 2
+        # Add the squared distance to the sum
+        sum_of_squared_distance += squared_distance
+    # Calculate the standard deviation using the formula
+    std_dev = (sum_of_squared_distance / (length_numbers - 1)) ** 0.5
+    # Round the standard deviation to two decimal places
+    std_dev = round(std_dev, 2)
+    # Return the calculated standard deviation
+    return std_dev
+
+# Example usage:
+numbers = [1, 2, 3, 4, 5]
+mean = calculate_mean(numbers)
+median = calculate_median(numbers)
+std_dev = calculate_standard_deviation(numbers)
+# Print the results
+print("Mean:", mean)
+print("Median:", median)
+print("Standard Deviation:", std_dev)
